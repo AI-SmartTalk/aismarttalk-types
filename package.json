@@ -1,0 +1,35 @@
+{
+  "name": "@aismarttalk/aismarttalk-types",
+  "version": "1.0.0",
+  "description": "Shared types and schemas for AISmartTalk",
+  "homepage": "https://github.com/AI-SmartTalk/aismarttalk-types#readme",
+  "bugs": {
+    "url": "https://github.com/AI-SmartTalk/aismarttalk-types/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AI-SmartTalk/aismarttalk-types.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
