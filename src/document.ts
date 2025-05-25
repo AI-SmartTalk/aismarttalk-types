@@ -31,7 +31,7 @@ export interface FilterParams {
 }
 
 export const FilterParamsSchema = z.object({
-    query: z.string().min(3),
+    query: z.string().min(3, { message: "Query must be at least 3 characters long" }).nonempty(),
     categories: z.array(z.string()).optional(),
     sources: z.array(z.nativeEnum(SourceType)).optional(),
     maxDistance: z.number().min(0.01).max(1).default(0.2),
