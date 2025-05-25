@@ -53,3 +53,11 @@ export interface DocumentPublicResponse extends DocumentPublic {
     _distance: number;
 }
 
+type DocumentSourceBody = {
+  documentDatas: any[];
+  source: (typeof sourceAvailable)[number];
+  chatModelId: string;
+  token: string;
+}
+
+const sourceAvailable = [SourceType.FAQ, SourceType.IMPORTED_PRODUCT, SourceType.DEFAULT] as const;
