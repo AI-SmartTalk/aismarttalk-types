@@ -32,7 +32,7 @@ export interface FilterParams {
 }
 
 export const FilterParamsSchema = z.object({
-    query: z.string().min(3, { message: "Query must be at least 3 characters long" }).nonempty(),
+    query: z.string().min(3, { message: "Query must be at least 3 characters long" }).nonempty('Query is required'),
     categories: z.array(z.string()).optional(),
     sources: z.array(z.nativeEnum(SourceType)).optional(),
     maxDistance: z.number().min(0.01).max(1).default(0.2),
@@ -50,8 +50,8 @@ export interface DocumentPublic {
 
 export const DocumentPublicSchema = z.object({
     id: z.string().optional(),
-    title: z.string(),
-    content: z.string(),
+    title: z.string().min(3, { message: "Title must be at least 3 characters long" }).nonempty(),
+    content: z.string().min(50, { message: "Content must be at least 50 characters long" }).nonempty(),
     _distance: z.number(),
     source: z.nativeEnum(SourceType).default(SourceType.DEFAULT),
     categoryId: z.string().nullable()
