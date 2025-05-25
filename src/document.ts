@@ -42,18 +42,14 @@ export const FilterParamsSchema = z.object({
 
 export interface DocumentPublic {
     id: string;
-    title: string;
+    externalId: string;
+    title: string | null;
     content: string;
-    _distance: number;
-    source: SourceType;
+    sourceType: SourceType;
     categoryId: string | null;
+  }
+
+export interface DocumentPublicResponse extends DocumentPublic {
+    _distance: number;
 }
 
-export const DocumentPublicSchema = z.object({
-    id: z.string().optional(),
-    title: z.string().min(3, { message: "Title must be at least 3 characters long" }).nonempty('Title is required'),
-    content: z.string().min(50, { message: "Content must be at least 50 characters long" }).nonempty('Content is required'),
-    _distance: z.number(),
-    source: z.nativeEnum(SourceType).default(SourceType.DEFAULT),
-    categoryId: z.string().nullable()
-});
