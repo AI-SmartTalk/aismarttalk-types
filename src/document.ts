@@ -24,6 +24,7 @@ export enum SourceType {
 }
 
 export interface FilterParams {
+    query: string;
     categories?: string[];
     sources?: SourceType[];
     maxDistance?: number;
