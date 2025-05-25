@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+// TODO: add more types when needed
 export enum SourceType {
   PLUGIN = "PLUGIN",
   WORDPRESS = "WORDPRESS", 
