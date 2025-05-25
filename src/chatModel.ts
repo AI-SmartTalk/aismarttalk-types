@@ -27,8 +27,8 @@ export interface ChatModelPublic {
   }
   
   export const UpdateChatModelConfigurationSchema = z.object({
-    responseBiography: z.string().nullable(),
-    decisionBiography: z.string().nullable(),
+    responseBiography: z.string().nullable().default(""),
+    decisionBiography: z.string().nullable().default(""),
     configurationType: z.nativeEnum(ConfigurationType),
     defaultTools: z.array(z.nativeEnum(DefaultTool)),
   });
