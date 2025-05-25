@@ -1,2 +1,2 @@
-export * from './category'; 
-export * from './chatModel';
+export * from './category.js';
+export * from './chatModel.js';
