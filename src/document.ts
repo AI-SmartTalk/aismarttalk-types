@@ -56,8 +56,12 @@ export interface DocumentPublicResponse extends DocumentPublic {
 export type DocumentSourceBody = {
   documentDatas: any[];
   source: (typeof sourceAvailable)[number];
-  chatModelId: string;
-  token: string;
 }
 
 export const sourceAvailable = [SourceType.FAQ, SourceType.IMPORTED_PRODUCT, SourceType.DEFAULT] as const;
+
+export const DocumentSourceBodySchema = z.object({
+  documentDatas: z.array(z.any()).min(1, { message: "At least one document is required" }),
+  source: z.nativeEnum(SourceType),
+  categoryId: z.string().optional(),
+});
