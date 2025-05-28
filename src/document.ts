@@ -53,15 +53,20 @@ export interface DocumentPublicResponse extends DocumentPublic {
     _distance: number;
 }
 
-export type DocumentSourceBody = {
+export interface DocumentSourceArgs {
   documentDatas: any[];
   source: (typeof sourceAvailable)[number];
+  categoryId?: string | null;
 }
 
 export const sourceAvailable = [SourceType.FAQ, SourceType.IMPORTED_PRODUCT, SourceType.DEFAULT] as const;
 
 export const DocumentSourceBodySchema = z.object({
   documentDatas: z.array(z.any()).min(1, { message: "At least one document is required" }),
-  source: z.nativeEnum(SourceType),
+  source: z.enum(sourceAvailable),
   categoryId: z.string().optional(),
 });
+
+export interface DocumentSourceResponse {
+  status: string;
+}
